@@ -4,6 +4,20 @@
     https://api.github.com/users/<your name>
 */
 
+import axios from 'axios'
+console.log(axios);
+const request = axios.get('https://api.github.com/users/dujules23')
+.then(data => {
+  console.log('success')
+  console.log(data)
+})
+
+.catch(err => {
+  console.log('reject')
+  console.log('ERROR:', err)
+})
+
+console.log('pending', request)
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -49,6 +63,56 @@ const followersArray = [];
       </div>
     </div>
 */
+function gitData (data){
+    
+    //Instansiate
+    const card = document.createElement('div')
+    const img = document.createElement('img')
+    const cInfo = document.createElement('div')
+    const h3 = document.createElement('h3')
+    const pUser =  document.createElement('p')
+    const pLoc = document.createElement('p')
+    const pPro = document.createElement('p')
+    const a = document.createElement ('a')
+    const pFollowers = document.createElement('p')
+    const pFollowing = document.createElement('p')
+    const pBio = document.createElement('p')
+
+    //creating markup
+    card.appendChild(img)
+    card.appendChild(cInfo)
+
+    cInfo.appendChild(h3)
+    cInfo.appendChild(pUser)
+    cInfo.appendChild(pLoc)
+    cInfo.appendChild(pPro)
+    cInfo.appendChild(pFollowers)
+    cInfo.appendChild(pFollowing)
+    cInfo.appendChild(pBio)
+
+    pPro.appendChild(a)
+
+    console.log(card)
+
+
+    //Adding classes
+    card.classList.add('card')
+    cInfo.classList.add('class-info')
+    h3.classList.add('name')
+    pUser.classList.add('username')
+
+    //fix these
+    a.href = "address to users github page"
+    img.src = "image url of user"
+    //Text Content
+
+
+
+
+
+}
+
+console.log(gitData())
 
 /*
   List of LS Instructors Github username's:
