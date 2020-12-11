@@ -19,6 +19,7 @@ const request = axios.get('https://api.github.com/users/dujules23')
 })
 
 console.log('pending', request)
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -43,7 +44,39 @@ console.log('pending', request)
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigknell'];
+
+console.log(followersArray)
+  followersArray.forEach(login =>{
+      console.log(login)
+
+  axios.get(`https://api.github.com/users/${login}`)
+  .then(response => {
+  console.log('success')
+  console.log(response.data)
+  gitData(response.data)
+})
+
+ .catch(err => {
+  console.log('reject')
+  console.log('ERROR:', err)
+})
+
+    // axios.get(`https://api.github.com/${users}/dujules23'`)
+    // .then(({response}) => {
+    //   const card = gitData(response.data)
+    //   const mainDiv2 = document.querySelector('.cards')
+    //   mainDiv2.appendChild(card)
+
+    //   console.log(card)
+    // })
+    // // .catch(err => console.log(err))
+  })
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
