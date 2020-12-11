@@ -7,9 +7,10 @@
 import axios from 'axios'
 console.log(axios);
 const request = axios.get('https://api.github.com/users/dujules23')
-.then(data => {
+.then(response => {
   console.log('success')
-  console.log(data)
+  console.log(response.data)
+  gitData(response.data)
 })
 
 .catch(err => {
@@ -63,9 +64,12 @@ const followersArray = [];
       </div>
     </div>
 */
-function gitData (data){
+function gitData ({avatar_url, name, login, location, html_url, followers, following, bio}){
     
-    //Instansiate
+    // console.log(avatar_url)
+    // console.log(html_url)
+    
+    //Instancing 
     const card = document.createElement('div')
     const img = document.createElement('img')
     const cInfo = document.createElement('div')
@@ -102,17 +106,29 @@ function gitData (data){
     pUser.classList.add('username')
 
     //fix these
-    a.href = "address to users github page"
-    img.src = "image url of user"
+    a.href = `${html_url}`
+    img.src = `${avatar_url}`
+    
+    console.log(a.href);
+    
     //Text Content
+    
+    h3.textContent = `${name}`
+    pUser.textContent = `${login}`
+    pLoc.textContent = `Location: ${location}`
+    pFollowers.textContent = `Followers: ${followers}`
+    pFollowing.textContent = `Following: ${following}`
+    pBio.textContent = `Bio: ${bio}`
 
+    //Append Markup to the DOM
+    const mainDiv = document.querySelector('.cards')
 
-
-
+    mainDiv.appendChild(card)
 
 }
 
-console.log(gitData())
+
+
 
 /*
   List of LS Instructors Github username's:
